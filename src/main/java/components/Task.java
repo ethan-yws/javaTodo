@@ -1,34 +1,25 @@
 package components;
 
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
+import java.time.LocalDate;
 import java.util.Date;
 
 public class Task {
     private String text;
     private final int id;
-    private Date deadline;
+    private LocalDate deadline;
 
-    public Task(int id) {
+    public Task(String text, int id, LocalDate deadline) {
+        this.text = text;
         this.id = id;
+        this.deadline = deadline;
     }
 
     public void setText(String text) {
         this.text = text;
     }
 
-    public void setDeadline(String deadline) {
-        SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
-
-        try {
-            Date date = formatter.parse(deadline);
-            this.deadline = date;
-            System.out.println(date);
-            System.out.println(formatter.format(date));
-
-        } catch (ParseException e) {
-            e.printStackTrace();
-        }
+    public void setDeadline(LocalDate deadline) {
+        this.deadline = deadline;
     }
 
     public int getId() {
@@ -39,7 +30,7 @@ public class Task {
         return this.text;
     }
 
-    public Date getDeadline() {
+    public LocalDate getDeadline() {
         return this.deadline;
     }
 
